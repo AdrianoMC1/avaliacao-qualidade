@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avaliação — Qualidade BRBA01</title>
+<style>
+  :root {
+    --bg: #F7F6F3;
+    --surface: #FFFFFF;
+    --border: #E2E0DA;
+    --text: #1A1A18;
+    --muted: #6B6A66;
+    --accent: #1A5C3A;
+    --accent-light: #E6F2EB;
+    --accent-mid: #2E7D50;
+    --blue: #1C4F8A;
+    --blue-light: #E8EFF8;
+    --amber: #7A4F0D;
+    --amber-light: #FDF2E3;
+    --danger: #8B1A1A;
+    --danger-light: #FDE8E8;
+    --success: #1A5C3A;
+    --success-light: #E6F2EB;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+  }
+  header .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 8px;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  header p {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  /* CANDIDATE FORM */
+  .candidate-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .candidate-card h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .field-grid .full { grid-column: 1 / -1; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .field input, .field select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--accent-mid);
+    background: white;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.75rem 0 0.75rem;
+    padding-left: 2px;
+  }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .q-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 0.9rem;
+  }
+  .q-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .subj .q-num { background: var(--accent-light); color: var(--accent); }
+  .obj .q-num  { background: var(--blue-light); color: var(--blue); }
+  .tec .q-num  { background: var(--amber-light); color: var(--amber); }
+
+  .q-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+  .subj .q-badge { background: var(--accent-light); color: var(--accent); }
+  .obj .q-badge  { background: var(--blue-light); color: var(--blue); }
+  .tec .q-badge  { background: var(--amber-light); color: var(--amber); }
+
+  .q-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .q-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 3px;
+  }
+
+  /* OPTIONS */
+  .options { display: flex; flex-direction: column; gap: 6px; }
+  .opt-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+    font-size: 14px;
+  }
+  .opt-label:hover { background: var(--bg); border-color: #ccc; }
+  .opt-label input[type="radio"] { margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
+  .opt-label.selected { background: var(--accent-light); border-color: var(--accent-mid); }
+
+  /* TEXTAREA */
+  .q-textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    resize: vertical;
+    min-height: 72px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .q-textarea:focus { border-color: var(--accent-mid); background: white; }
+
+  /* SUBMIT */
+  .submit-wrap {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .btn-submit {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 13px 40px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    width: 100%;
+    max-width: 320px;
+  }
+  .btn-submit:hover { background: var(--accent-mid); }
+  .btn-submit:active { transform: scale(0.98); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* RESULT */
+  #result { display: none; }
+  .result-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .result-name {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .score-big {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin: 8px 0 4px;
+  }
+  .score-big.aprovado { color: var(--success); }
+  .score-big.reprovado { color: var(--danger); }
+  .score-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .score-bar-bg {
+    background: var(--border);
+    border-radius: 99px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.8s ease;
+  }
+  .aprovado-bar { background: var(--accent); }
+  .reprovado-bar { background: var(--danger); }
+  .score-meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .verdict-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 10px;
+  }
+  .aprovado-badge { background: var(--success-light); color: var(--success); }
+  .reprovado-badge { background: var(--danger-light); color: var(--danger); }
+
+  .gabarito-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .gab-header {
+    padding: 0.9rem 1.25rem;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .gab-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 1.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .gab-item:last-child { border-bottom: none; }
+  .gab-q { font-weight: 600; color: var(--muted); min-width: 24px; }
+  .gab-icon { font-size: 15px; flex-shrink: 0; }
+  .gab-text { color: var(--text); flex: 1; }
+  .gab-correct { color: var(--success); }
+  .gab-wrong { color: var(--danger); }
+  .gab-subj { color: var(--amber); }
+
+  .meta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .meta-row { display: flex; justify-content: space-between; padding: 4px 0; }
+  .meta-row span:last-child { color: var(--text); font-weight: 500; }
+
+  .btn-retry {
+    width: 100%;
+    max-width: 320px;
+    padding: 11px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text);
+    margin-top: 0.5rem;
+  }
+  .btn-retry:hover { background: var(--bg); }
+
+  .error-msg {
+    background: var(--danger-light);
+    color: var(--danger);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .field-grid { grid-template-columns: 1fr; }
+    .field-grid .full { grid-column: 1; }
+    header { padding: 1.5rem 1rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Mercado Livre · BRBA01</div>
+  <h1>Avaliação de Qualidade</h1>
+  <p>10 questões · Subjetivas, objetivas e técnicas</p>
+</header>
+
+<div class="container">
+
+  <!-- QUIZ FORM -->
+  <div id="quiz">
+
+    <!-- Dados do candidato -->
+    <div class="candidate-card">
+      <h2>Identificação</h2>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Nome completo *</label>
+          <input type="text" id="f-nome" placeholder="Seu nome completo">
+        </div>
+        <div class="field">
+          <label>Matrícula *</label>
+          <input type="text" id="f-matricula" placeholder="Ex: 123456">
+        </div>
+        <div class="field">
+          <label>Tempo de casa *</label>
+          <select id="f-tempo">
+            <option value="">Selecione</option>
+            <option>Menos de 6 meses</option>
+            <option>6 meses a 1 ano</option>
+            <option>1 a 2 anos</option>
+            <option>2 a 3 anos</option>
+            <option>3 a 5 anos</option>
+            <option>Mais de 5 anos</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Última promoção *</label>
+          <input type="text" id="f-promocao" placeholder="Ex: Analista Jr → Analista Pl (mar/2024)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="section-label">Bloco 1 — Conhecimento geral e perfil</div>
+    <div class="q-card subj">
+      <span class="q-badge">Subjetiva</span>
+      <div class="q-top">
+        <div class="q-num">1</div>
+        <div>
+          <div class="q-text">Para você, o que significa trabalhar com qualidade? Como isso se reflete no seu dia a dia?</div>
+        </div>
+      </div>
+      <textarea class="q-textarea" id="q1" placeholder="Resposta livre..."></textarea>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card subj">
+      <span class="q-badge">Subjetiva</span>
+      <div class="q-top">
+        <div class="q-num">2</div>
+        <div>
+          <div class="q-text">Descreva uma situação em que você identificou uma inconformidade em um processo. Como você agiu?</div>
+        </div>
+      </div>
+      <textarea class="q-textarea" id="q2" placeholder="Resposta livre..."></textarea>
+    </div>
+
+    <!-- Q3 -->
+    <div class="section-label">Bloco 2 — Conhecimento técnico RNC</div>
+    <div class="q-card tec">
+      <span class="q-badge">Técnica</span>
+      <div class="q-top">
+        <div class="q-num">3</div>
+        <div>
+          <div class="q-text">O que é um RNC (Relatório de Não Conformidade) e qual é o seu objetivo dentro de um processo de qualidade?</div>
+        </div>
+      </div>
+      <textarea class="q-textarea" id="q3" placeholder="Explique com suas palavras..."></textarea>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card obj">
+      <span class="q-badge">Objetiva</span>
+      <div class="q-top">
+        <div class="q-num">4</div>
+        <div>
+          <div class="q-text">Qual é o SLA para elaboração de um RNC após a identificação de uma inconformidade?</div>
+        </div>
+      </div>
+      <div class="options" id="opts4">
+        <label class="opt-label"><input type="radio" name="q4" value="A"> <span><strong>A)</strong> 12 horas</span></label>
+        <label class="opt-label"><input type="radio" name="q4" value="B"> <span><strong>B)</strong> 24 horas</span></label>
+        <label class="opt-label"><input type="radio" name="q4" value="C"> <span><strong>C)</strong> 48 horas</span></label>
+        <label class="opt-label"><input type="radio" name="q4" value="D"> <span><strong>D)</strong> 72 horas</span></label>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-card obj">
+      <span class="q-badge">Objetiva</span>
+      <div class="q-top">
+        <div class="q-num">5</div>
+        <div>
+          <div class="q-text">Após receber a notificação de um RNC, qual é o prazo máximo para a área ofensora responder com o plano de ação?</div>
+        </div>
+      </div>
+      <div class="options" id="opts5">
+        <label class="opt-label"><input type="radio" name="q5" value="A"> <span><strong>A)</strong> 1 dia</span></label>
+        <label class="opt-label"><input type="radio" name="q5" value="B"> <span><strong>B)</strong> 2 dias</span></label>
+        <label class="opt-label"><input type="radio" name="q5" value="C"> <span><strong>C)</strong> 4 dias</span></label>
+        <label class="opt-label"><input type="radio" name="q5" value="D"> <span><strong>D)</strong> 7 dias</span></label>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-card tec">
+      <span class="q-badge">Técnica</span>
+      <div class="q-top">
+        <div class="q-num">6</div>
+        <div>
+          <div class="q-text">Coloque em ordem as etapas do fluxo geral de um RNC:</div>
+          <div class="q-sub">(1) Notificação da área ofensora — (2) Inconformidade identificada — (3) Qualidade acionada — (4) Elaboração do RNC</div>
+        </div>
+      </div>
+      <div class="options" id="opts6">
+        <label class="opt-label"><input type="radio" name="q6" value="A"> <span><strong>A)</strong> 2 → 3 → 4 → 1</span></label>
+        <label class="opt-label"><input type="radio" name="q6" value="B"> <span><strong>B)</strong> 1 → 2 → 3 → 4</span></label>
+        <label class="opt-label"><input type="radio" name="q6" value="C"> <span><strong>C)</strong> 2 → 4 → 3 → 1</span></label>
+        <label class="opt-label"><input type="radio" name="q6" value="D"> <span><strong>D)</strong> 3 → 2 → 4 → 1</span></label>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="section-label">Bloco 3 — Situacional</div>
+    <div class="q-card subj">
+      <span class="q-badge">Subjetiva</span>
+      <div class="q-top">
+        <div class="q-num">7</div>
+        <div>
+          <div class="q-text">Você é do time de QA e recebe o retorno de um RNC fora do prazo de 4 dias. Quais seriam seus próximos passos?</div>
+        </div>
+      </div>
+      <textarea class="q-textarea" id="q7" placeholder="Descreva como agiria..."></textarea>
+    </div>
+
+    <!-- Q8 -->
+    <div class="q-card tec">
+      <span class="q-badge">Técnica</span>
+      <div class="q-top">
+        <div class="q-num">8</div>
+        <div>
+          <div class="q-text">Qual é o canal oficial usado para notificar a área ofensora em um RNC e quem é responsável por esse envio?</div>
+        </div>
+      </div>
+      <div class="options" id="opts8">
+        <label class="opt-label"><input type="radio" name="q8" value="A"> <span><strong>A)</strong> WhatsApp — área ofensora</span></label>
+        <label class="opt-label"><input type="radio" name="q8" value="B"> <span><strong>B)</strong> E-mail — time de QA</span></label>
+        <label class="opt-label"><input type="radio" name="q8" value="C"> <span><strong>C)</strong> E-mail — área ofensora</span></label>
+        <label class="opt-label"><input type="radio" name="q8" value="D"> <span><strong>D)</strong> Sistema interno — gestão</span></label>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="section-label">Bloco 4 — Visão crítica</div>
+    <div class="q-card obj">
+      <span class="q-badge">Objetiva</span>
+      <div class="q-top">
+        <div class="q-num">9</div>
+        <div>
+          <div class="q-text">Qual das afirmativas abaixo melhor descreve a finalidade do RNC?</div>
+        </div>
+      </div>
+      <div class="options" id="opts9">
+        <label class="opt-label"><input type="radio" name="q9" value="A"> <span><strong>A)</strong> Punir a área que cometeu o erro</span></label>
+        <label class="opt-label"><input type="radio" name="q9" value="B"> <span><strong>B)</strong> Registrar e tratar desvios para melhorar a eficiência dos processos</span></label>
+        <label class="opt-label"><input type="radio" name="q9" value="C"> <span><strong>C)</strong> Substituir reuniões de alinhamento entre equipes</span></label>
+        <label class="opt-label"><input type="radio" name="q9" value="D"> <span><strong>D)</strong> Controlar a jornada de trabalho dos colaboradores</span></label>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="q-card subj">
+      <span class="q-badge">Subjetiva</span>
+      <div class="q-top">
+        <div class="q-num">10</div>
+        <div>
+          <div class="q-text">Na sua opinião, o que pode ser feito para reduzir a recorrência de inconformidades no processo? Dê um exemplo prático.</div>
+        </div>
+      </div>
+      <textarea class="q-textarea" id="q10" placeholder="Resposta livre..."></textarea>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="btn-submit" onclick="submitQuiz()">Ver meu resultado →</button>
+      <div class="error-msg" id="error-msg">Preencha todos os campos e responda todas as perguntas antes de continuar.</div>
+    </div>
+
+  </div><!-- end #quiz -->
+
+  <!-- RESULT -->
+  <div id="result">
+
+    <div class="result-header">
+      <div class="result-name" id="res-name"></div>
+      <div class="score-big" id="res-score"></div>
+      <div class="score-label" id="res-label"></div>
+      <div class="score-bar-bg">
+        <div class="score-bar-fill" id="res-bar" style="width:0%"></div>
+      </div>
+      <div class="score-meta" id="res-meta"></div>
+      <div class="verdict-badge" id="res-verdict"></div>
+    </div>
+
+    <div class="meta-card" id="res-meta-card"></div>
+
+    <div class="gabarito-section">
+      <div class="gab-header">Gabarito detalhado</div>
+      <div id="gab-list"></div>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="btn-retry" onclick="resetQuiz()">↩ Recomeçar</button>
+    </div>
+
+  </div><!-- end #result -->
+
+</div><!-- end .container -->
+
+<script>
+const GABARITO = { q4:'B', q5:'C', q6:'A', q8:'B', q9:'B' };
+const GABARITO_TEXT = {
+  q4: { correta:'B) 24 horas', explicacao:'SLA de 24 horas para elaboração do RNC após a inconformidade.' },
+  q5: { correta:'C) 4 dias', explicacao:'O prazo é de 4 dias a partir do recebimento do e-mail.' },
+  q6: { correta:'A) 2 → 3 → 4 → 1', explicacao:'Inconformidade → Qualidade acionada → Elaboração do RNC → Notificação.' },
+  q8: { correta:'B) E-mail — time de QA', explicacao:'A notificação é enviada por e-mail pelo time de Qualidade.' },
+  q9: { correta:'B) Registrar e tratar desvios para melhorar a eficiência dos processos', explicacao:'O RNC existe para medir e melhorar a eficiência, não para punir.' }
+};
+const Q_LABELS = {
+  q1:'Para você, o que significa trabalhar com qualidade?',
+  q2:'Situação em que identificou uma inconformidade',
+  q3:'O que é um RNC e qual é o seu objetivo?',
+  q4:'SLA para elaboração do RNC',
+  q5:'Prazo para resposta da área ofensora',
+  q6:'Ordem das etapas do fluxo RNC',
+  q7:'RNC retornado fora do prazo — próximos passos',
+  q8:'Canal oficial de notificação do RNC',
+  q9:'Finalidade do RNC',
+  q10:'Como reduzir recorrência de inconformidades?'
+};
+
+// Highlight selected options
+document.querySelectorAll('.opt-label input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    const name = radio.getAttribute('name');
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+      r.closest('.opt-label').classList.remove('selected');
+    });
+    radio.closest('.opt-label').classList.add('selected');
+  });
+});
+
+function getRadioValue(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : null;
+}
+
+function submitQuiz() {
+  const nome = document.getElementById('f-nome').value.trim();
+  const matricula = document.getElementById('f-matricula').value.trim();
+  const tempo = document.getElementById('f-tempo').value;
+  const promocao = document.getElementById('f-promocao').value.trim();
+
+  const subjetivas = ['q1','q2','q3','q7','q10'];
+  const objetivas = ['q4','q5','q6','q8','q9'];
+
+  let allFilled = nome && matricula && tempo && promocao;
+  subjetivas.forEach(q => { if (!document.getElementById(q).value.trim()) allFilled = false; });
+  objetivas.forEach(q => { if (!getRadioValue(q)) allFilled = false; });
+
+  const err = document.getElementById('error-msg');
+  if (!allFilled) { err.style.display = 'block'; return; }
+  err.style.display = 'none';
+
+  // Score objetivas (1 pt each) + subjetivas shown as manual review
+  let objScore = 0;
+  objetivas.forEach(q => { if (getRadioValue(q) === GABARITO[q]) objScore++; });
+
+  const maxObj = 5; // 5 objetivas/tecnicas
+  const pct = Math.round((objScore / maxObj) * 100);
+  const aprovado = pct >= 60;
+
+  // Build result
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
+
+  document.getElementById('res-name').textContent = nome + ' · ' + matricula;
+  document.getElementById('res-score').textContent = objScore + '/' + maxObj;
+  document.getElementById('res-score').className = 'score-big ' + (aprovado ? 'aprovado' : 'reprovado');
+  document.getElementById('res-label').textContent = 'questões objetivas e técnicas corretas';
+
+  const bar = document.getElementById('res-bar');
+  bar.style.width = '0%';
+  bar.className = 'score-bar-fill ' + (aprovado ? 'aprovado-bar' : 'reprovado-bar');
+  setTimeout(() => bar.style.width = pct + '%', 100);
+
+  document.getElementById('res-meta').textContent = pct + '% de acerto nas objetivas · As 5 subjetivas aguardam avaliação manual';
+
+  const verdict = document.getElementById('res-verdict');
+  verdict.textContent = aprovado ? '✓ Aprovado nas objetivas' : '✗ Abaixo de 60% nas objetivas';
+  verdict.className = 'verdict-badge ' + (aprovado ? 'aprovado-badge' : 'reprovado-badge');
+
+  // Meta card
+  document.getElementById('res-meta-card').innerHTML = `
+    <div class="meta-row"><span>Nome</span><span>${nome}</span></div>
+    <div class="meta-row"><span>Matrícula</span><span>${matricula}</span></div>
+    <div class="meta-row"><span>Tempo de casa</span><span>${tempo}</span></div>
+    <div class="meta-row"><span>Última promoção</span><span>${promocao}</span></div>
+  `;
+
+  // Gabarito list
+  const gabList = document.getElementById('gab-list');
+  gabList.innerHTML = '';
+  const allQs = ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'];
+  allQs.forEach((q, i) => {
+    const item = document.createElement('div');
+    item.className = 'gab-item';
+    const qNum = i + 1;
+
+    if (objetivas.includes(q)) {
+      const resp = getRadioValue(q);
+      const correct = resp === GABARITO[q];
+      const g = GABARITO_TEXT[q];
+      item.innerHTML = `
+        <span class="gab-q">Q${qNum}</span>
+        <span class="gab-icon">${correct ? '✅' : '❌'}</span>
+        <span class="gab-text ${correct ? 'gab-correct' : 'gab-wrong'}">
+          <strong>Sua resposta: ${resp})</strong> — Correta: ${g.correta}<br>
+          <span style="color:var(--muted);font-size:12px">${g.explicacao}</span>
+        </span>`;
+    } else {
+      const resp = document.getElementById(q).value.trim();
+      item.innerHTML = `
+        <span class="gab-q">Q${qNum}</span>
+        <span class="gab-icon">📝</span>
+        <span class="gab-text gab-subj">
+          <strong>${Q_LABELS[q]}</strong><br>
+          <span style="color:var(--muted);font-size:12px;font-style:italic">"${resp.substring(0,120)}${resp.length>120?'…':''}"</span><br>
+          <span style="color:var(--muted);font-size:11px">Avaliação manual pelo avaliador</span>
+        </span>`;
+    }
+    gabList.appendChild(item);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetQuiz() {
+  document.getElementById('quiz').style.display = 'block';
+  document.getElementById('result').style.display = 'none';
+  document.querySelectorAll('textarea').forEach(t => t.value = '');
+  document.querySelectorAll('input[type="radio"]').forEach(r => {
+    r.checked = false;
+    r.closest('.opt-label').classList.remove('selected');
+  });
+  document.querySelectorAll('input[type="text"]').forEach(i => i.value = '');
+  document.getElementById('f-tempo').value = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
