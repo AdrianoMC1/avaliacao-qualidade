@@ -5,215 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avaliação — Qualidade BRBA01</title>
 <style>
-  :root {
-    --bg: #F7F6F3;
-    --surface: #FFFFFF;
-    --border: #E2E0DA;
-    --text: #1A1A18;
-    --muted: #6B6A66;
-    --accent: #1A5C3A;
-    --accent-light: #E6F2EB;
-    --accent-mid: #2E7D50;
-    --blue: #1C4F8A;
-    --blue-light: #E8EFF8;
-    --amber: #7A4F0D;
-    --amber-light: #FDF2E3;
-    --purple: #4A1F8A;
-    --purple-light: #F0EAFA;
-    --danger: #8B1A1A;
-    --danger-light: #FDE8E8;
-    --success: #1A5C3A;
-    --success-light: #E6F2EB;
-    --radius: 10px;
-    --radius-sm: 6px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-  header {
-    background: var(--accent);
-    color: white;
-    padding: 2rem 1.5rem 1.5rem;
-    text-align: center;
-  }
-  header .eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.75;
-    margin-bottom: 8px;
-  }
-  header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
-  header p { font-size: 13px; opacity: 0.8; }
-  .container { max-width: 640px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+:root {
+  --bg: #F7F6F3; --surface: #FFFFFF; --border: #E2E0DA; --text: #1A1A18; --muted: #6B6A66;
+  --accent: #1A5C3A; --accent-light: #E6F2EB; --accent-mid: #2E7D50;
+  --blue: #1C4F8A; --blue-light: #E8EFF8;
+  --amber: #7A4F0D; --amber-light: #FDF2E3;
+  --purple: #4A1F8A; --purple-light: #F0EAFA;
+  --danger: #8B1A1A; --danger-light: #FDE8E8;
+  --radius: 10px; --radius-sm: 6px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
+header { background: var(--accent); color: white; padding: 2rem 1.5rem 1.5rem; text-align: center; }
+header .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-bottom: 8px; }
+header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+header p { font-size: 13px; opacity: 0.8; }
+.container { max-width: 640px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
 
-  .candidate-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-  .candidate-card h2 {
-    font-size: 13px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--muted); margin-bottom: 1rem;
-  }
-  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .field-grid .full { grid-column: 1 / -1; }
-  .field label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 4px; }
-  .field input, .field select {
-    width: 100%; padding: 9px 12px; border: 1px solid var(--border);
-    border-radius: var(--radius-sm); font-size: 14px; font-family: inherit;
-    background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s;
-  }
-  .field input:focus, .field select:focus { border-color: var(--accent-mid); background: white; }
+/* BLOCKED */
+#blocked { display: none; text-align: center; padding: 3rem 1rem; }
+#blocked .block-icon { font-size: 48px; margin-bottom: 1rem; }
+#blocked h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+#blocked p { color: var(--muted); font-size: 14px; }
 
-  .section-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); margin: 1.75rem 0 0.75rem; padding-left: 2px;
-  }
-  .progress-bar-bg {
-    background: var(--border); border-radius: 99px; height: 5px; margin-bottom: 1.5rem; overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%; background: var(--accent); border-radius: 99px; transition: width 0.4s ease;
-  }
+.candidate-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; }
+.candidate-card h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 1rem; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.field-grid .full { grid-column: 1 / -1; }
+.field label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 4px; }
+.field input, .field select { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-family: inherit; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s; }
+.field input:focus, .field select:focus { border-color: var(--accent-mid); background: white; }
 
-  .q-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 0.75rem;
-  }
-  .q-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.9rem; }
-  .q-num {
-    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
-  }
-  .ce .q-num   { background: var(--blue-light); color: var(--blue); }
-  .alt .q-num  { background: var(--accent-light); color: var(--accent); }
-  .sit .q-num  { background: var(--amber-light); color: var(--amber); }
-  .mult .q-num { background: var(--purple-light); color: var(--purple); }
+.progress-wrap { margin-bottom: 1.5rem; }
+.progress-bar-bg { background: var(--border); border-radius: 99px; height: 5px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width 0.4s ease; }
+.progress-label { font-size: 12px; color: var(--muted); text-align: right; margin-top: 4px; }
 
-  .q-badge {
-    display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.07em; padding: 2px 7px; border-radius: 20px; margin-bottom: 6px;
-  }
-  .ce .q-badge   { background: var(--blue-light); color: var(--blue); }
-  .alt .q-badge  { background: var(--accent-light); color: var(--accent); }
-  .sit .q-badge  { background: var(--amber-light); color: var(--amber); }
-  .mult .q-badge { background: var(--purple-light); color: var(--purple); }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 1.75rem 0 0.75rem; padding-left: 2px; }
+.section-desc { font-size: 13px; color: var(--muted); margin: -0.5rem 0 0.75rem; padding-left: 2px; }
 
-  .q-text { font-size: 14px; font-weight: 500; line-height: 1.5; color: var(--text); }
-  .q-scenario {
-    background: var(--bg); border-left: 3px solid var(--amber);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    padding: 10px 12px; font-size: 13px; color: var(--muted);
-    margin-bottom: 10px; line-height: 1.5;
-  }
+.q-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 0.75rem; }
+.q-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.9rem; }
+.q-num { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.ce .q-num { background: var(--blue-light); color: var(--blue); }
+.alt .q-num { background: var(--accent-light); color: var(--accent); }
+.sit .q-num { background: var(--amber-light); color: var(--amber); }
+.perf .q-num { background: var(--purple-light); color: var(--purple); }
+.q-badge { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 7px; border-radius: 20px; margin-bottom: 6px; }
+.ce .q-badge { background: var(--blue-light); color: var(--blue); }
+.alt .q-badge { background: var(--accent-light); color: var(--accent); }
+.sit .q-badge { background: var(--amber-light); color: var(--amber); }
+.perf .q-badge { background: var(--purple-light); color: var(--purple); }
+.q-text { font-size: 14px; font-weight: 500; line-height: 1.5; color: var(--text); }
+.q-scenario { background: var(--bg); border-left: 3px solid var(--amber); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 10px 12px; font-size: 13px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
 
-  .options { display: flex; flex-direction: column; gap: 6px; }
-  .opt-label {
-    display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px;
-    border: 1px solid var(--border); border-radius: var(--radius-sm);
-    cursor: pointer; transition: background 0.12s, border-color 0.12s; font-size: 14px;
-  }
-  .opt-label:hover { background: var(--bg); border-color: #ccc; }
-  .opt-label input[type="radio"] { margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
-  .opt-label.selected { background: var(--accent-light); border-color: var(--accent-mid); }
+.options { display: flex; flex-direction: column; gap: 6px; }
+.opt-label { display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: background 0.12s, border-color 0.12s; font-size: 14px; }
+.opt-label:hover { background: var(--bg); border-color: #ccc; }
+.opt-label input[type="radio"] { margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
+.opt-label.selected { background: var(--accent-light); border-color: var(--accent-mid); }
+.perf .opt-label.selected { background: var(--purple-light); border-color: #7B52C8; }
 
-  .ce-options { display: flex; gap: 10px; }
-  .ce-btn {
-    flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm);
-    background: var(--surface); cursor: pointer; font-size: 14px; font-weight: 500;
-    font-family: inherit; color: var(--text); transition: all 0.12s;
-  }
-  .ce-btn:hover { background: var(--bg); border-color: #ccc; }
-  .ce-btn.selected-certo { background: var(--accent-light); border-color: var(--accent-mid); color: var(--accent); }
-  .ce-btn.selected-errado { background: var(--danger-light); border-color: var(--danger); color: var(--danger); }
+.ce-options { display: flex; gap: 10px; }
+.ce-btn { flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); cursor: pointer; font-size: 14px; font-weight: 500; font-family: inherit; color: var(--text); transition: all 0.12s; }
+.ce-btn:hover { background: var(--bg); border-color: #ccc; }
+.ce-btn.selected-certo { background: var(--accent-light); border-color: var(--accent-mid); color: var(--accent); }
+.ce-btn.selected-errado { background: var(--danger-light); border-color: var(--danger); color: var(--danger); }
 
-  .submit-wrap { margin-top: 2rem; text-align: center; }
-  .btn-submit {
-    background: var(--accent); color: white; border: none; border-radius: var(--radius-sm);
-    padding: 13px 40px; font-size: 15px; font-weight: 600; cursor: pointer;
-    transition: background 0.15s, transform 0.1s; width: 100%; max-width: 320px;
-  }
-  .btn-submit:hover { background: var(--accent-mid); }
-  .btn-submit:active { transform: scale(0.98); }
+.submit-wrap { margin-top: 2rem; text-align: center; }
+.btn-submit { background: var(--accent); color: white; border: none; border-radius: var(--radius-sm); padding: 13px 40px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s, transform 0.1s; width: 100%; max-width: 320px; }
+.btn-submit:hover { background: var(--accent-mid); }
+.btn-submit:active { transform: scale(0.98); }
+.error-msg { background: var(--danger-light); color: var(--danger); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; margin-top: 10px; display: none; }
 
-  .error-msg {
-    background: var(--danger-light); color: var(--danger); border-radius: var(--radius-sm);
-    padding: 10px 14px; font-size: 13px; margin-top: 10px; display: none;
-  }
+/* RESULT */
+#result { display: none; }
+.result-header { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin-bottom: 1rem; }
+.result-name { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.scores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.score-box { background: var(--bg); border-radius: var(--radius-sm); padding: 12px; }
+.score-box-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 4px; }
+.score-box-num { font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.score-box-num.tec { color: var(--accent); }
+.score-box-num.perf { color: var(--purple); }
+.score-box-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.total-score { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.total-big { font-size: 42px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--text); margin-bottom: 4px; }
 
-  /* RESULT */
-  #result { display: none; }
-  .result-header {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1.5rem; text-align: center; margin-bottom: 1rem;
-  }
-  .result-name { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
-  .score-big {
-    font-size: 52px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin: 8px 0 4px;
-  }
-  .score-big.aprovado { color: var(--success); }
-  .score-big.reprovado { color: var(--danger); }
-  .score-label { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
-  .score-bar-bg { background: var(--border); border-radius: 99px; height: 8px; overflow: hidden; margin-bottom: 8px; }
-  .score-bar-fill { height: 100%; border-radius: 99px; transition: width 0.8s ease; }
-  .aprovado-bar { background: var(--accent); }
-  .reprovado-bar { background: var(--danger); }
-  .score-meta { font-size: 12px; color: var(--muted); }
-  .verdict-badge {
-    display: inline-block; padding: 4px 14px; border-radius: 20px;
-    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-top: 10px;
-  }
-  .aprovado-badge { background: var(--success-light); color: var(--success); }
-  .reprovado-badge { background: var(--danger-light); color: var(--danger); }
+.score-bar-wrap { margin-bottom: 6px; }
+.score-bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 3px; }
+.score-bar-bg { background: var(--border); border-radius: 99px; height: 6px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 99px; transition: width 0.8s ease; }
+.tec-bar { background: var(--accent); }
+.perf-bar { background: var(--purple); }
 
-  .gabarito-section {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem;
-  }
-  .gab-header {
-    padding: 0.9rem 1.25rem; font-size: 13px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); border-bottom: 1px solid var(--border);
-  }
-  .gab-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 10px 1.25rem; border-bottom: 1px solid var(--border); font-size: 13px;
-  }
-  .gab-item:last-child { border-bottom: none; }
-  .gab-q { font-weight: 600; color: var(--muted); min-width: 24px; }
-  .gab-text { color: var(--text); flex: 1; line-height: 1.5; }
-  .gab-correct { color: var(--success); }
-  .gab-wrong { color: var(--danger); }
+.meta-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 13px; color: var(--muted); }
+.meta-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 0.5px solid var(--border); }
+.meta-row:last-child { border-bottom: none; }
+.meta-row span:last-child { color: var(--text); font-weight: 500; }
 
-  .meta-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 13px; color: var(--muted);
-  }
-  .meta-row { display: flex; justify-content: space-between; padding: 4px 0; }
-  .meta-row span:last-child { color: var(--text); font-weight: 500; }
+.gabarito-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem; }
+.gab-header { padding: 0.9rem 1.25rem; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); border-bottom: 1px solid var(--border); }
+.gab-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 1.25rem; border-bottom: 1px solid var(--border); font-size: 13px; }
+.gab-item:last-child { border-bottom: none; }
+.gab-q { font-weight: 600; color: var(--muted); min-width: 24px; }
+.gab-text { color: var(--text); flex: 1; line-height: 1.5; }
+.gab-correct { color: var(--success, #1A5C3A); }
+.gab-wrong { color: var(--danger); }
+.gab-perf { color: var(--purple); }
 
-  .btn-retry {
-    width: 100%; max-width: 320px; padding: 11px; background: transparent;
-    border: 1px solid var(--border); border-radius: var(--radius-sm);
-    font-size: 14px; font-weight: 500; cursor: pointer; color: var(--text); margin-top: 0.5rem;
-  }
-  .btn-retry:hover { background: var(--bg); }
+.wa-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; max-width: 320px; padding: 13px; background: #25D366; color: white; border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; margin: 0 auto 10px; transition: background 0.15s; }
+.wa-btn:hover { background: #1ebe5d; }
+.wa-icon { width: 20px; height: 20px; }
 
-  @media (max-width: 480px) {
-    .field-grid { grid-template-columns: 1fr; }
-    .field-grid .full { grid-column: 1; }
-    header { padding: 1.5rem 1rem 1.25rem; }
-    .ce-options { flex-direction: column; }
-  }
+@media (max-width: 480px) {
+  .field-grid { grid-template-columns: 1fr; }
+  .field-grid .full { grid-column: 1; }
+  .ce-options { flex-direction: column; }
+  .scores-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -221,26 +131,27 @@
 <header>
   <div class="eyebrow">Mercado Livre · BRBA01</div>
   <h1>Avaliação de Qualidade</h1>
-  <p>20 questões · Certo/Errado, Alternativas e Situações</p>
+  <p>25 questões · Técnicas + Perfil Comportamental</p>
 </header>
 
 <div class="container">
+
+<!-- BLOCKED -->
+<div id="blocked">
+  <div class="block-icon">🔒</div>
+  <h2>Avaliação já realizada</h2>
+  <p>Você já respondeu esta avaliação neste dispositivo.<br>Cada candidato pode responder apenas uma vez.</p>
+</div>
+
+<!-- QUIZ -->
 <div id="quiz">
 
-  <!-- Identificação -->
   <div class="candidate-card">
     <h2>Identificação</h2>
     <div class="field-grid">
-      <div class="field full">
-        <label>Nome completo *</label>
-        <input type="text" id="f-nome" placeholder="Seu nome completo">
-      </div>
-      <div class="field">
-        <label>Matrícula *</label>
-        <input type="text" id="f-matricula" placeholder="Ex: 123456">
-      </div>
-      <div class="field">
-        <label>Tempo de casa *</label>
+      <div class="field full"><label>Nome completo *</label><input type="text" id="f-nome" placeholder="Seu nome completo"></div>
+      <div class="field"><label>Matrícula *</label><input type="text" id="f-matricula" placeholder="Ex: 123456"></div>
+      <div class="field"><label>Tempo de casa *</label>
         <select id="f-tempo">
           <option value="">Selecione</option>
           <option>Menos de 6 meses</option>
@@ -251,99 +162,69 @@
           <option>Mais de 5 anos</option>
         </select>
       </div>
-      <div class="field full">
-        <label>Última promoção *</label>
-        <input type="text" id="f-promocao" placeholder="Ex: Analista Jr → Analista Pl (mar/2024)">
-      </div>
+      <div class="field full"><label>Última promoção *</label><input type="text" id="f-promocao" placeholder="Ex: Analista Jr → Analista Pl (mar/2024)"></div>
     </div>
   </div>
 
-  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress" style="width:0%"></div></div>
+  <div class="progress-wrap">
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress" style="width:0%"></div></div>
+    <div class="progress-label"><span id="progress-count">0</span> de 25 respondidas</div>
+  </div>
 
-  <!-- BLOCO 1: CERTO OU ERRADO -->
+  <!-- BLOCO 1 -->
   <div class="section-label">Bloco 1 — Certo ou Errado</div>
+  <div class="section-desc">Cada afirmativa vale 1 ponto.</div>
 
   <div class="q-card ce">
     <span class="q-badge">Certo ou Errado</span>
-    <div class="q-top"><div class="q-num">1</div>
-      <div class="q-text">O RNC deve ser elaborado pelo time de Qualidade em até 24 horas após a inconformidade ser identificada.</div>
-    </div>
-    <div class="ce-options">
-      <button class="ce-btn" onclick="selectCE(this,'q1','C')">✓ Certo</button>
-      <button class="ce-btn" onclick="selectCE(this,'q1','E')">✗ Errado</button>
-    </div>
+    <div class="q-top"><div class="q-num">1</div><div class="q-text">O RNC deve ser elaborado pelo time de Qualidade em até 24 horas após a inconformidade ser identificada.</div></div>
+    <div class="ce-options"><button class="ce-btn" onclick="selectCE(this,'q1','C')">✓ Certo</button><button class="ce-btn" onclick="selectCE(this,'q1','E')">✗ Errado</button></div>
     <input type="hidden" id="q1" value="">
   </div>
 
   <div class="q-card ce">
     <span class="q-badge">Certo ou Errado</span>
-    <div class="q-top"><div class="q-num">2</div>
-      <div class="q-text">A área ofensora tem até 4 dias para responder o RNC após receber a notificação por e-mail.</div>
-    </div>
-    <div class="ce-options">
-      <button class="ce-btn" onclick="selectCE(this,'q2','C')">✓ Certo</button>
-      <button class="ce-btn" onclick="selectCE(this,'q2','E')">✗ Errado</button>
-    </div>
+    <div class="q-top"><div class="q-num">2</div><div class="q-text">A área ofensora tem até 4 dias para responder o RNC após receber a notificação por e-mail.</div></div>
+    <div class="ce-options"><button class="ce-btn" onclick="selectCE(this,'q2','C')">✓ Certo</button><button class="ce-btn" onclick="selectCE(this,'q2','E')">✗ Errado</button></div>
     <input type="hidden" id="q2" value="">
   </div>
 
   <div class="q-card ce">
     <span class="q-badge">Certo ou Errado</span>
-    <div class="q-top"><div class="q-num">3</div>
-      <div class="q-text">Quando uma inconformidade é identificada, a área ofensora deve acionar diretamente o time de Qualidade para iniciar o processo.</div>
-    </div>
-    <div class="ce-options">
-      <button class="ce-btn" onclick="selectCE(this,'q3','C')">✓ Certo</button>
-      <button class="ce-btn" onclick="selectCE(this,'q3','E')">✗ Errado</button>
-    </div>
+    <div class="q-top"><div class="q-num">3</div><div class="q-text">Quando uma inconformidade é identificada, a área ofensora deve acionar diretamente o time de Qualidade para iniciar o processo.</div></div>
+    <div class="ce-options"><button class="ce-btn" onclick="selectCE(this,'q3','C')">✓ Certo</button><button class="ce-btn" onclick="selectCE(this,'q3','E')">✗ Errado</button></div>
     <input type="hidden" id="q3" value="">
   </div>
 
   <div class="q-card ce">
     <span class="q-badge">Certo ou Errado</span>
-    <div class="q-top"><div class="q-num">4</div>
-      <div class="q-text">O plano de ação da área ofensora deve ser preenchido diretamente no sistema e não precisa ser enviado por e-mail.</div>
-    </div>
-    <div class="ce-options">
-      <button class="ce-btn" onclick="selectCE(this,'q4','C')">✓ Certo</button>
-      <button class="ce-btn" onclick="selectCE(this,'q4','E')">✗ Errado</button>
-    </div>
+    <div class="q-top"><div class="q-num">4</div><div class="q-text">O plano de ação da área ofensora deve ser preenchido diretamente no sistema e não precisa ser enviado por e-mail.</div></div>
+    <div class="ce-options"><button class="ce-btn" onclick="selectCE(this,'q4','C')">✓ Certo</button><button class="ce-btn" onclick="selectCE(this,'q4','E')">✗ Errado</button></div>
     <input type="hidden" id="q4" value="">
   </div>
 
   <div class="q-card ce">
     <span class="q-badge">Certo ou Errado</span>
-    <div class="q-top"><div class="q-num">5</div>
-      <div class="q-text">O RNC é uma ferramenta punitiva cujo principal objetivo é responsabilizar formalmente a área que cometeu o desvio.</div>
-    </div>
-    <div class="ce-options">
-      <button class="ce-btn" onclick="selectCE(this,'q5','C')">✓ Certo</button>
-      <button class="ce-btn" onclick="selectCE(this,'q5','E')">✗ Errado</button>
-    </div>
+    <div class="q-top"><div class="q-num">5</div><div class="q-text">O RNC é uma ferramenta punitiva cujo principal objetivo é responsabilizar formalmente a área que cometeu o desvio.</div></div>
+    <div class="ce-options"><button class="ce-btn" onclick="selectCE(this,'q5','C')">✓ Certo</button><button class="ce-btn" onclick="selectCE(this,'q5','E')">✗ Errado</button></div>
     <input type="hidden" id="q5" value="">
   </div>
 
   <div class="q-card ce">
     <span class="q-badge">Certo ou Errado</span>
-    <div class="q-top"><div class="q-num">6</div>
-      <div class="q-text">Um RNC pode ser aberto mesmo que a inconformidade identificada tenha sido corrigida antes de ser reportada ao time de Qualidade.</div>
-    </div>
-    <div class="ce-options">
-      <button class="ce-btn" onclick="selectCE(this,'q6','C')">✓ Certo</button>
-      <button class="ce-btn" onclick="selectCE(this,'q6','E')">✗ Errado</button>
-    </div>
+    <div class="q-top"><div class="q-num">6</div><div class="q-text">Um RNC pode ser aberto mesmo que a inconformidade identificada já tenha sido corrigida antes de ser reportada ao time de Qualidade.</div></div>
+    <div class="ce-options"><button class="ce-btn" onclick="selectCE(this,'q6','C')">✓ Certo</button><button class="ce-btn" onclick="selectCE(this,'q6','E')">✗ Errado</button></div>
     <input type="hidden" id="q6" value="">
   </div>
 
-  <!-- BLOCO 2: ALTERNATIVA CORRETA -->
+  <!-- BLOCO 2 -->
   <div class="section-label">Bloco 2 — Alternativa Correta</div>
+  <div class="section-desc">Cada questão vale 1 ponto.</div>
 
   <div class="q-card alt">
     <span class="q-badge">Alternativa Correta</span>
-    <div class="q-top"><div class="q-num">7</div>
-      <div class="q-text">Qual é a sequência correta do fluxo geral de um RNC?</div>
-    </div>
-    <div class="options" id="opts7">
+    <div class="q-top"><div class="q-num">7</div><div class="q-text">Qual é a sequência correta do fluxo geral de um RNC?</div></div>
+    <div class="options">
       <label class="opt-label"><input type="radio" name="q7" value="A"> <span>A) Qualidade acionada → Inconformidade identificada → Elaboração do RNC → Notificação da área ofensora</span></label>
       <label class="opt-label"><input type="radio" name="q7" value="B"> <span>B) Inconformidade identificada → Qualidade acionada → Elaboração do RNC → Notificação da área ofensora</span></label>
       <label class="opt-label"><input type="radio" name="q7" value="C"> <span>C) Elaboração do RNC → Inconformidade identificada → Qualidade acionada → Notificação da área ofensora</span></label>
@@ -353,10 +234,8 @@
 
   <div class="q-card alt">
     <span class="q-badge">Alternativa Correta</span>
-    <div class="q-top"><div class="q-num">8</div>
-      <div class="q-text">Qual é o canal oficial pelo qual o time de Qualidade notifica a área ofensora após abrir um RNC?</div>
-    </div>
-    <div class="options" id="opts8">
+    <div class="q-top"><div class="q-num">8</div><div class="q-text">Qual é o canal oficial pelo qual o time de Qualidade notifica a área ofensora após abrir um RNC?</div></div>
+    <div class="options">
       <label class="opt-label"><input type="radio" name="q8" value="A"> <span>A) Ligação telefônica direta ao gestor</span></label>
       <label class="opt-label"><input type="radio" name="q8" value="B"> <span>B) Mensagem via WhatsApp corporativo</span></label>
       <label class="opt-label"><input type="radio" name="q8" value="C"> <span>C) E-mail enviado pelo time de Qualidade</span></label>
@@ -366,10 +245,8 @@
 
   <div class="q-card alt">
     <span class="q-badge">Alternativa Correta</span>
-    <div class="q-top"><div class="q-num">9</div>
-      <div class="q-text">Qual das alternativas melhor define o objetivo de um RNC dentro do processo de qualidade?</div>
-    </div>
-    <div class="options" id="opts9">
+    <div class="q-top"><div class="q-num">9</div><div class="q-text">Qual das alternativas melhor define o objetivo de um RNC dentro do processo de qualidade?</div></div>
+    <div class="options">
       <label class="opt-label"><input type="radio" name="q9" value="A"> <span>A) Documentar erros para fins de auditoria externa</span></label>
       <label class="opt-label"><input type="radio" name="q9" value="B"> <span>B) Registrar desvios e medir a eficiência dos processos para tratativa e melhoria contínua</span></label>
       <label class="opt-label"><input type="radio" name="q9" value="C"> <span>C) Justificar a demissão de colaboradores que cometem erros</span></label>
@@ -379,23 +256,19 @@
 
   <div class="q-card alt">
     <span class="q-badge">Alternativa Correta</span>
-    <div class="q-top"><div class="q-num">10</div>
-      <div class="q-text">Se a área ofensora não responder o RNC dentro do prazo, qual é a consequência esperada dentro do fluxo?</div>
-    </div>
-    <div class="options" id="opts10">
-      <label class="opt-label"><input type="radio" name="q10" value="A"> <span>A) O RNC é encerrado automaticamente após o vencimento do prazo</span></label>
-      <label class="opt-label"><input type="radio" name="q10" value="B"> <span>B) O time de Qualidade realiza escalonamento para tratar o atraso</span></label>
-      <label class="opt-label"><input type="radio" name="q10" value="C"> <span>C) A área ofensora pode solicitar extensão sem precisar justificar</span></label>
-      <label class="opt-label"><input type="radio" name="q10" value="D"> <span>D) O processo recomeça do início sem registro do atraso</span></label>
+    <div class="q-top"><div class="q-num">10</div><div class="q-text">Se a área ofensora não responder o RNC dentro do prazo, qual é a ação esperada do time de QA?</div></div>
+    <div class="options">
+      <label class="opt-label"><input type="radio" name="q10" value="A"> <span>A) Encerrar o RNC automaticamente após o vencimento do prazo</span></label>
+      <label class="opt-label"><input type="radio" name="q10" value="B"> <span>B) Realizar escalonamento para garantir a tratativa do atraso</span></label>
+      <label class="opt-label"><input type="radio" name="q10" value="C"> <span>C) Aguardar a área responder sem qualquer ação adicional</span></label>
+      <label class="opt-label"><input type="radio" name="q10" value="D"> <span>D) Reiniciar o processo do zero sem registro do atraso</span></label>
     </div>
   </div>
 
   <div class="q-card alt">
     <span class="q-badge">Alternativa Correta</span>
-    <div class="q-top"><div class="q-num">11</div>
-      <div class="q-text">Quem é responsável por preencher o plano de ação dentro do fluxo do RNC?</div>
-    </div>
-    <div class="options" id="opts11">
+    <div class="q-top"><div class="q-num">11</div><div class="q-text">Quem é responsável por preencher o plano de ação dentro do fluxo do RNC?</div></div>
+    <div class="options">
       <label class="opt-label"><input type="radio" name="q11" value="A"> <span>A) O time de Qualidade, após análise da inconformidade</span></label>
       <label class="opt-label"><input type="radio" name="q11" value="B"> <span>B) A gestão da operação, independentemente da área envolvida</span></label>
       <label class="opt-label"><input type="radio" name="q11" value="C"> <span>C) A área/processo notificado como ofensor</span></label>
@@ -405,10 +278,8 @@
 
   <div class="q-card alt">
     <span class="q-badge">Alternativa Correta</span>
-    <div class="q-top"><div class="q-num">12</div>
-      <div class="q-text">Qual das afirmativas descreve corretamente a diferença entre o SLA de elaboração do RNC e o SLA de resposta da área ofensora?</div>
-    </div>
-    <div class="options" id="opts12">
+    <div class="q-top"><div class="q-num">12</div><div class="q-text">Qual afirmativa descreve corretamente a diferença entre os SLAs do fluxo RNC?</div></div>
+    <div class="options">
       <label class="opt-label"><input type="radio" name="q12" value="A"> <span>A) Ambos têm prazo de 24 horas</span></label>
       <label class="opt-label"><input type="radio" name="q12" value="B"> <span>B) O RNC é elaborado em 24h; a área tem 4 dias para responder</span></label>
       <label class="opt-label"><input type="radio" name="q12" value="C"> <span>C) O RNC é elaborado em 4 dias; a área tem 24h para responder</span></label>
@@ -416,140 +287,168 @@
     </div>
   </div>
 
-  <!-- BLOCO 3: SITUAÇÕES -->
+  <!-- BLOCO 3 -->
   <div class="section-label">Bloco 3 — Situações</div>
+  <div class="section-desc">Cada questão vale 1 ponto.</div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">13</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      Durante uma auditoria de processo no setor de Packing, o analista de QA identifica que uma etapa de conferência de volumes não está sendo executada conforme o procedimento. O erro ocorreu há 2 dias e a operação não reportou nada.
-    </div>
+    <div class="q-top"><div class="q-num">13</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">Durante auditoria no setor de Packing, o analista de QA identifica que uma etapa de conferência de volumes não está sendo executada conforme o procedimento. O erro ocorreu há 2 dias e a operação não reportou nada.</div>
     <div class="options">
-      <label class="opt-label"><input type="radio" name="q13" value="A"> <span>A) Como a operação não reportou, o time de QA deve aguardar o próximo ciclo de auditoria para registrar</span></label>
+      <label class="opt-label"><input type="radio" name="q13" value="A"> <span>A) Como a operação não reportou, o time de QA deve aguardar o próximo ciclo de auditoria</span></label>
       <label class="opt-label"><input type="radio" name="q13" value="B"> <span>B) O time de QA deve acionar internamente e elaborar um RNC em até 24h, notificando a área responsável</span></label>
-      <label class="opt-label"><input type="radio" name="q13" value="C"> <span>C) Como o erro ocorreu há 2 dias, o prazo para abertura de RNC já venceu e o registro não é necessário</span></label>
-      <label class="opt-label"><input type="radio" name="q13" value="D"> <span>D) O analista deve corrigir o desvio diretamente sem abrir RNC para não impactar os indicadores da área</span></label>
+      <label class="opt-label"><input type="radio" name="q13" value="C"> <span>C) Como o erro ocorreu há 2 dias, o prazo para abertura de RNC já venceu</span></label>
+      <label class="opt-label"><input type="radio" name="q13" value="D"> <span>D) O analista deve corrigir o desvio diretamente sem abrir RNC para não impactar os indicadores</span></label>
     </div>
   </div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">14</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      A área de Expedição recebe um RNC por e-mail no dia 05/06 (segunda-feira). No dia 10/06 (sábado), o supervisor da área envia a resposta com o plano de ação pelo mesmo e-mail.
-    </div>
+    <div class="q-top"><div class="q-num">14</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">A área de Expedição recebe um RNC por e-mail no dia 05/06 (segunda-feira). No dia 10/06 (sábado), o supervisor envia a resposta com o plano de ação.</div>
     <div class="options">
       <label class="opt-label"><input type="radio" name="q14" value="A"> <span>A) A resposta está dentro do prazo, pois foram 5 dias corridos</span></label>
       <label class="opt-label"><input type="radio" name="q14" value="B"> <span>B) A resposta está fora do prazo, pois o SLA de 4 dias foi ultrapassado</span></label>
       <label class="opt-label"><input type="radio" name="q14" value="C"> <span>C) A resposta está dentro do prazo, pois sábado não conta como dia útil</span></label>
-      <label class="opt-label"><input type="radio" name="q14" value="D"> <span>D) Não é possível determinar sem saber o horário exato do envio do e-mail original</span></label>
+      <label class="opt-label"><input type="radio" name="q14" value="D"> <span>D) Não é possível determinar sem saber o horário exato do e-mail original</span></label>
     </div>
   </div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">15</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      O time de QA abre um RNC para a área de Recebimento. O coordenador da área responde o e-mail dizendo que a falha foi corrigida, mas não preenche o plano de ação no RNC e não descreve as ações tomadas.
-    </div>
+    <div class="q-top"><div class="q-num">15</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">O time de QA abre um RNC para a área de Recebimento. O coordenador responde o e-mail dizendo que a falha foi corrigida, mas não preenche o plano de ação no RNC.</div>
     <div class="options">
       <label class="opt-label"><input type="radio" name="q15" value="A"> <span>A) A resposta por e-mail é suficiente; o RNC pode ser encerrado</span></label>
-      <label class="opt-label"><input type="radio" name="q15" value="B"> <span>B) O RNC deve ser considerado respondido, pois o canal oficial (e-mail) foi utilizado</span></label>
-      <label class="opt-label"><input type="radio" name="q15" value="C"> <span>C) O time de QA deve devolver o RNC como incompleto, pois o plano de ação não foi preenchido conforme o fluxo</span></label>
-      <label class="opt-label"><input type="radio" name="q15" value="D"> <span>D) O time de QA pode preencher o plano de ação em nome da área para agilizar o processo</span></label>
+      <label class="opt-label"><input type="radio" name="q15" value="B"> <span>B) O RNC deve ser considerado respondido, pois o canal oficial foi utilizado</span></label>
+      <label class="opt-label"><input type="radio" name="q15" value="C"> <span>C) O time de QA deve devolver o RNC como incompleto, pois o plano de ação não foi preenchido</span></label>
+      <label class="opt-label"><input type="radio" name="q15" value="D"> <span>D) O time de QA pode preencher o plano de ação em nome da área para agilizar</span></label>
     </div>
   </div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">16</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      Em uma semana, o mesmo setor de Sorting recebe 3 RNCs diferentes por falhas no processo de separação. O gestor da área afirma que as correções foram pontuais e que não há necessidade de um plano de ação mais robusto.
-    </div>
+    <div class="q-top"><div class="q-num">16</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">Em uma semana, o mesmo setor de Sorting recebe 3 RNCs por falhas no processo de separação. O gestor afirma que as correções foram pontuais e que não há necessidade de um plano mais robusto.</div>
     <div class="options">
       <label class="opt-label"><input type="radio" name="q16" value="A"> <span>A) O gestor está correto; cada RNC é independente e não exige análise conjunta</span></label>
       <label class="opt-label"><input type="radio" name="q16" value="B"> <span>B) A recorrência indica que as ações corretivas não foram efetivas; o time de QA deve exigir análise de causa raiz</span></label>
-      <label class="opt-label"><input type="radio" name="q16" value="C"> <span>C) Com 3 RNCs na mesma semana, o processo deve ser suspenso automaticamente até nova auditoria</span></label>
-      <label class="opt-label"><input type="radio" name="q16" value="D"> <span>D) O time de QA deve encerrar os RNCs anteriores e abrir um único novo para consolidar as ocorrências</span></label>
+      <label class="opt-label"><input type="radio" name="q16" value="C"> <span>C) Com 3 RNCs na mesma semana, o processo deve ser suspenso automaticamente</span></label>
+      <label class="opt-label"><input type="radio" name="q16" value="D"> <span>D) O time de QA deve encerrar os RNCs anteriores e abrir um único novo para consolidar</span></label>
     </div>
   </div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">17</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      Um colaborador do turno T2 percebe que colega do turno anterior deixou um lote de pedidos sem a etiqueta obrigatória. O supervisor está ausente e o colaborador não sabe se deve parar o processo ou continuar.
-    </div>
+    <div class="q-top"><div class="q-num">17</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">O time de QA recebe o plano de ação de um RNC dentro do prazo. Após análise, identifica que as ações descritas são superficiais e não endereçam a causa raiz.</div>
     <div class="options">
-      <label class="opt-label"><input type="radio" name="q17" value="A"> <span>A) Deve continuar o processo normalmente e registrar no relatório do turno ao final</span></label>
-      <label class="opt-label"><input type="radio" name="q17" value="B"> <span>B) Deve acionar o time de QA imediatamente para avaliação e não processar o lote com inconformidade</span></label>
-      <label class="opt-label"><input type="radio" name="q17" value="C"> <span>C) Deve corrigir o problema sozinho, colocando as etiquetas, para não atrasar a operação</span></label>
-      <label class="opt-label"><input type="radio" name="q17" value="D"> <span>D) Deve aguardar o retorno do supervisor antes de qualquer ação, mesmo que isso atrase o turno</span></label>
+      <label class="opt-label"><input type="radio" name="q17" value="A"> <span>A) Como o prazo foi cumprido, o RNC deve ser encerrado independentemente da qualidade do plano</span></label>
+      <label class="opt-label"><input type="radio" name="q17" value="B"> <span>B) O time de QA deve encerrar e abrir um novo RNC para tratar a causa raiz separadamente</span></label>
+      <label class="opt-label"><input type="radio" name="q17" value="C"> <span>C) O time de QA deve devolver o plano solicitando revisão com análise de causa raiz</span></label>
+      <label class="opt-label"><input type="radio" name="q17" value="D"> <span>D) O time de QA deve complementar o plano com suas próprias sugestões e encerrar</span></label>
     </div>
   </div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">18</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      O time de QA recebe o plano de ação de um RNC dentro do prazo. Após análise, identifica que as ações descritas são superficiais e não endereçam a causa raiz do problema. O prazo de resposta já foi cumprido.
-    </div>
+    <div class="q-top"><div class="q-num">18</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">Durante reunião de resultados, o gestor de operações sugere que o time de QA reduza a abertura de RNCs para "não prejudicar os indicadores da área".</div>
     <div class="options">
-      <label class="opt-label"><input type="radio" name="q18" value="A"> <span>A) Como o prazo foi cumprido, o RNC deve ser encerrado independentemente da qualidade do plano</span></label>
-      <label class="opt-label"><input type="radio" name="q18" value="B"> <span>B) O time de QA deve encerrar o RNC e abrir um novo para tratar a causa raiz separadamente</span></label>
-      <label class="opt-label"><input type="radio" name="q18" value="C"> <span>C) O time de QA deve devolver o plano de ação solicitando revisão com análise de causa raiz antes de encerrar</span></label>
-      <label class="opt-label"><input type="radio" name="q18" value="D"> <span>D) O time de QA deve complementar o plano de ação com suas próprias sugestões e encerrar o RNC</span></label>
+      <label class="opt-label"><input type="radio" name="q18" value="A"> <span>A) O time de QA deve acolher a sugestão, pois indicadores são prioritários para o negócio</span></label>
+      <label class="opt-label"><input type="radio" name="q18" value="B"> <span>B) O time de QA deve explicar que reduzir artificialmente distorce a realidade e prejudica a melhoria do processo</span></label>
+      <label class="opt-label"><input type="radio" name="q18" value="C"> <span>C) O time de QA deve negociar uma cota mensal de RNCs com a gestão</span></label>
+      <label class="opt-label"><input type="radio" name="q18" value="D"> <span>D) O time de QA deve transferir a responsabilidade de abertura para a própria operação</span></label>
     </div>
   </div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">19</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      Durante uma reunião de resultados, o gestor de operações questiona o alto número de RNCs abertos no mês e sugere que o time de QA reduza a abertura para "não prejudicar os indicadores da área".
-    </div>
+    <div class="q-top"><div class="q-num">19</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">Dois analistas de QA identificam a mesma inconformidade no setor de Embalagem em momentos diferentes do mesmo turno e cada um abre um RNC separado para o mesmo desvio.</div>
     <div class="options">
-      <label class="opt-label"><input type="radio" name="q19" value="A"> <span>A) O time de QA deve acolher a sugestão, pois indicadores são prioritários para o negócio</span></label>
-      <label class="opt-label"><input type="radio" name="q19" value="B"> <span>B) O time de QA deve explicar que o RNC é uma ferramenta de melhoria; reduzir artificialmente distorce a realidade e prejudica o processo</span></label>
-      <label class="opt-label"><input type="radio" name="q19" value="C"> <span>C) O time de QA deve negociar uma cota mensal de RNCs com a gestão para equilibrar os indicadores</span></label>
-      <label class="opt-label"><input type="radio" name="q19" value="D"> <span>D) O time de QA deve transferir a responsabilidade de abertura dos RNCs para a própria operação</span></label>
+      <label class="opt-label"><input type="radio" name="q19" value="A"> <span>A) Os dois RNCs devem ser mantidos abertos para garantir que a área responda em dobro</span></label>
+      <label class="opt-label"><input type="radio" name="q19" value="B"> <span>B) O RNC duplicado deve ser encerrado como duplicata e vinculado ao original, com alinhamento entre os analistas</span></label>
+      <label class="opt-label"><input type="radio" name="q19" value="C"> <span>C) O segundo RNC substitui o primeiro por ser mais recente</span></label>
+      <label class="opt-label"><input type="radio" name="q19" value="D"> <span>D) Ambos devem ser encerrados e um novo RNC consolidado deve ser aberto pela liderança</span></label>
     </div>
   </div>
 
   <div class="q-card sit">
     <span class="q-badge">Situação</span>
-    <div class="q-top"><div class="q-num">20</div>
-      <div class="q-text">Analise a situação e marque a alternativa correta:</div>
-    </div>
-    <div class="q-scenario">
-      Dois analistas de QA identificam a mesma inconformidade no processo de Embalagem em momentos diferentes do mesmo turno. Um abre um RNC; o outro, sem saber, abre um segundo RNC para o mesmo desvio.
-    </div>
+    <div class="q-top"><div class="q-num">20</div><div class="q-text">Analise e marque a alternativa correta:</div></div>
+    <div class="q-scenario">Um colaborador do turno T2 percebe que o turno anterior deixou um lote de pedidos sem a etiqueta obrigatória. O supervisor está ausente.</div>
     <div class="options">
-      <label class="opt-label"><input type="radio" name="q20" value="A"> <span>A) Os dois RNCs devem ser mantidos abertos para garantir que a área responda em dobro</span></label>
-      <label class="opt-label"><input type="radio" name="q20" value="B"> <span>B) O RNC duplicado deve ser identificado, encerrado como duplicata e vinculado ao original, com alinhamento entre os analistas</span></label>
-      <label class="opt-label"><input type="radio" name="q20" value="C"> <span>C) O segundo RNC substitui o primeiro por ser mais recente</span></label>
-      <label class="opt-label"><input type="radio" name="q20" value="D"> <span>D) Ambos devem ser encerrados e um novo RNC consolidado deve ser aberto pela liderança de QA</span></label>
+      <label class="opt-label"><input type="radio" name="q20" value="A"> <span>A) Deve continuar o processo normalmente e registrar no relatório do turno ao final</span></label>
+      <label class="opt-label"><input type="radio" name="q20" value="B"> <span>B) Deve acionar o time de QA imediatamente e não processar o lote com inconformidade</span></label>
+      <label class="opt-label"><input type="radio" name="q20" value="C"> <span>C) Deve corrigir sozinho colocando as etiquetas para não atrasar a operação</span></label>
+      <label class="opt-label"><input type="radio" name="q20" value="D"> <span>D) Deve aguardar o retorno do supervisor antes de qualquer ação</span></label>
+    </div>
+  </div>
+
+  <!-- BLOCO 4 PERFIL -->
+  <div class="section-label">Bloco 4 — Perfil Comportamental</div>
+  <div class="section-desc">Avalia fit com a área. Vale 0,5 ponto cada. Não há resposta errada — escolha a que mais te representa.</div>
+
+  <div class="q-card perf">
+    <span class="q-badge">Perfil</span>
+    <div class="q-top"><div class="q-num">21</div><div class="q-text">Você identifica uma falha recorrente no processo que não é da sua responsabilidade direta. O que você faz?</div></div>
+    <div class="options">
+      <label class="opt-label"><input type="radio" name="q21" value="A"> <span>A) Aguardo alguém da área responsável tomar iniciativa</span></label>
+      <label class="opt-label"><input type="radio" name="q21" value="B"> <span>B) Registro a ocorrência e comunico ao responsável, acompanhando até a resolução</span></label>
+      <label class="opt-label"><input type="radio" name="q21" value="C"> <span>C) Corrijo por conta própria para não perder tempo com burocracia</span></label>
+      <label class="opt-label"><input type="radio" name="q21" value="D"> <span>D) Menciono informalmente para o colega, sem registro formal</span></label>
+    </div>
+  </div>
+
+  <div class="q-card perf">
+    <span class="q-badge">Perfil</span>
+    <div class="q-top"><div class="q-num">22</div><div class="q-text">Você recebe feedback de que um RNC que você abriu estava com informações incompletas. Como você reage?</div></div>
+    <div class="options">
+      <label class="opt-label"><input type="radio" name="q22" value="A"> <span>A) Fico frustrado, pois considerei as informações suficientes no momento</span></label>
+      <label class="opt-label"><input type="radio" name="q22" value="B"> <span>B) Agradeço o feedback, corrijo imediatamente e anoto para não repetir</span></label>
+      <label class="opt-label"><input type="radio" name="q22" value="C"> <span>C) Questiono o critério utilizado para avaliar a completude do RNC</span></label>
+      <label class="opt-label"><input type="radio" name="q22" value="D"> <span>D) Aceito, mas espero que o gestor me dê um modelo mais claro para seguir</span></label>
+    </div>
+  </div>
+
+  <div class="q-card perf">
+    <span class="q-badge">Perfil</span>
+    <div class="q-top"><div class="q-num">23</div><div class="q-text">Você está sobrecarregado e percebe que não conseguirá entregar um RNC no prazo de 24h. O que você faz?</div></div>
+    <div class="options">
+      <label class="opt-label"><input type="radio" name="q23" value="A"> <span>A) Entrego fora do prazo sem avisar, pois a qualidade é mais importante que o tempo</span></label>
+      <label class="opt-label"><input type="radio" name="q23" value="B"> <span>B) Comunico ao gestor antecipadamente e peço apoio para priorizar ou redistribuir</span></label>
+      <label class="opt-label"><input type="radio" name="q23" value="C"> <span>C) Entrego um RNC incompleto para cumprir o prazo e completo depois</span></label>
+      <label class="opt-label"><input type="radio" name="q23" value="D"> <span>D) Ignoro a situação e foco nas outras demandas mais urgentes</span></label>
+    </div>
+  </div>
+
+  <div class="q-card perf">
+    <span class="q-badge">Perfil</span>
+    <div class="q-top"><div class="q-num">24</div><div class="q-text">Uma área com quem você tem boa relação comete uma inconformidade. Como você age?</div></div>
+    <div class="options">
+      <label class="opt-label"><input type="radio" name="q24" value="A"> <span>A) Dou uma chance informal antes de abrir o RNC para não prejudicar o relacionamento</span></label>
+      <label class="opt-label"><input type="radio" name="q24" value="B"> <span>B) Sigo o fluxo normalmente; o processo se aplica igualmente a todas as áreas</span></label>
+      <label class="opt-label"><input type="radio" name="q24" value="C"> <span>C) Abro o RNC, mas com linguagem mais branda para não gerar atrito</span></label>
+      <label class="opt-label"><input type="radio" name="q24" value="D"> <span>D) Consulto o gestor antes de decidir se abre ou não o RNC</span></label>
+    </div>
+  </div>
+
+  <div class="q-card perf">
+    <span class="q-badge">Perfil</span>
+    <div class="q-top"><div class="q-num">25</div><div class="q-text">Qual das características abaixo você considera mais importante para quem trabalha na área de Qualidade?</div></div>
+    <div class="options">
+      <label class="opt-label"><input type="radio" name="q25" value="A"> <span>A) Ser simpático e ter boa relação com todas as áreas</span></label>
+      <label class="opt-label"><input type="radio" name="q25" value="B"> <span>B) Ser isento, criterioso e orientado a processos, mesmo sob pressão</span></label>
+      <label class="opt-label"><input type="radio" name="q25" value="C"> <span>C) Ser rápido na execução, entregando sempre dentro do prazo</span></label>
+      <label class="opt-label"><input type="radio" name="q25" value="D"> <span>D) Ter experiência técnica ampla em todas as áreas da operação</span></label>
     </div>
   </div>
 
   <div class="submit-wrap">
-    <button class="btn-submit" onclick="submitQuiz()">Ver meu resultado →</button>
-    <div class="error-msg" id="error-msg">Preencha todos os campos e responda todas as 20 questões antes de continuar.</div>
+    <button class="btn-submit" onclick="submitQuiz()">Finalizar avaliação →</button>
+    <div class="error-msg" id="error-msg">Preencha todos os campos e responda todas as 25 questões antes de continuar.</div>
   </div>
 
 </div><!-- end #quiz -->
@@ -558,109 +457,126 @@
 <div id="result">
   <div class="result-header">
     <div class="result-name" id="res-name"></div>
-    <div class="score-big" id="res-score"></div>
-    <div class="score-label">questões corretas de 20</div>
-    <div class="score-bar-bg"><div class="score-bar-fill" id="res-bar" style="width:0%"></div></div>
-    <div class="score-meta" id="res-meta"></div>
-    <div class="verdict-badge" id="res-verdict"></div>
+    <div class="scores-grid">
+      <div class="score-box">
+        <div class="score-box-label">Nota Técnica</div>
+        <div class="score-box-num tec" id="res-tec">—</div>
+        <div class="score-box-sub">de 20 pontos</div>
+      </div>
+      <div class="score-box">
+        <div class="score-box-label">Nota Perfil</div>
+        <div class="score-box-num perf" id="res-perf">—</div>
+        <div class="score-box-sub">de 5 pontos (peso 0,5)</div>
+      </div>
+    </div>
+    <div class="score-bar-wrap">
+      <div class="score-bar-label"><span>Técnica</span><span id="res-tec-pct">0%</span></div>
+      <div class="score-bar-bg"><div class="score-bar-fill tec-bar" id="res-tec-bar" style="width:0%"></div></div>
+    </div>
+    <div class="score-bar-wrap" style="margin-top:6px">
+      <div class="score-bar-label"><span>Perfil</span><span id="res-perf-pct">0%</span></div>
+      <div class="score-bar-bg"><div class="score-bar-fill perf-bar" id="res-perf-bar" style="width:0%"></div></div>
+    </div>
+    <div style="margin-top:14px; padding-top:12px; border-top: 0.5px solid var(--border)">
+      <div class="total-score">Pontuação total</div>
+      <div class="total-big" id="res-total">—</div>
+      <div style="font-size:12px; color:var(--muted)">de 22,5 pontos possíveis</div>
+    </div>
   </div>
+
   <div class="meta-card" id="res-meta-card"></div>
+
   <div class="gabarito-section">
     <div class="gab-header">Gabarito detalhado</div>
     <div id="gab-list"></div>
   </div>
+
   <div class="submit-wrap">
-    <button class="btn-retry" onclick="resetQuiz()">↩ Recomeçar</button>
+    <a id="wa-link" class="wa-btn" href="#" target="_blank">
+      <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar resultado por WhatsApp
+    </a>
   </div>
 </div>
 
 </div><!-- container -->
 
 <script>
-const GABARITO = {
-  q1:'C', q2:'C', q3:'E', q4:'E', q5:'E', q6:'C',
-  q7:'B', q8:'C', q9:'B', q10:'B', q11:'C', q12:'B',
-  q13:'B', q14:'B', q15:'C', q16:'B', q17:'B', q18:'C', q19:'B', q20:'B'
-};
+const GABARITO_TEC = { q1:'C',q2:'C',q3:'E',q4:'E',q5:'E',q6:'C', q7:'B',q8:'C',q9:'B',q10:'B',q11:'C',q12:'B', q13:'B',q14:'B',q15:'C',q16:'B',q17:'C',q18:'B',q19:'B',q20:'B' };
+const GABARITO_PERF = { q21:'B',q22:'B',q23:'B',q24:'B',q25:'B' };
 
 const EXPLICACOES = {
-  q1:'Correto. O SLA para elaboração do RNC pelo time de QA é de 24 horas após identificar a inconformidade.',
-  q2:'Correto. A área ofensora tem 4 dias a partir do recebimento do e-mail para responder com o plano de ação.',
-  q3:'Errado. Quem aciona o time de Qualidade é quem identificou a inconformidade — não necessariamente a área ofensora. O fluxo parte da identificação para o acionamento da Qualidade.',
-  q4:'Errado. O fluxo prevê que a área ofensora preencha os campos do RNC e responda pelo e-mail — o canal oficial é o e-mail, não exclusivamente um sistema interno.',
-  q5:'Errado. O RNC é uma ferramenta de melhoria de processos, não punitiva. Seu objetivo é registrar desvios e medir a eficiência para tratativa e melhoria contínua.',
-  q6:'Certo. O registro da inconformidade no RNC é válido mesmo que já tenha sido corrigida, pois documenta o desvio para análise e prevenção de recorrência.',
-  q7:'Correta: B. A sequência é: Inconformidade identificada → Qualidade acionada → Elaboração do RNC → Notificação da área ofensora.',
-  q8:'Correta: C. O canal oficial de notificação é o e-mail, enviado pelo time de Qualidade para a área ofensora.',
-  q9:'Correta: B. O objetivo do RNC é registrar desvios, medir a eficiência dos processos e garantir tratativa e melhoria contínua.',
-  q10:'Correta: B. Quando a área não responde no prazo, o time de QA realiza o escalonamento para garantir tratativa.',
-  q11:'Correta: C. A área/processo notificado como ofensor é responsável por preencher o plano de ação e responder o RNC.',
-  q12:'Correta: B. O RNC deve ser elaborado em 24h; a área ofensora tem 4 dias a partir do recebimento do e-mail para responder.',
-  q13:'Correta: B. Independentemente de quando o erro ocorreu, o time de QA que identificou deve acionar internamente e elaborar o RNC em até 24h.',
-  q14:'Correta: B. Do dia 05 ao dia 09 são 4 dias corridos. A resposta no dia 10 está fora do prazo.',
-  q15:'Correta: C. Responder o e-mail sem preencher o plano de ação não encerra o RNC. O fluxo exige o preenchimento completo dos campos.',
-  q16:'Correta: B. A recorrência de inconformidades no mesmo setor indica que as ações corretivas anteriores não foram efetivas. Exige análise de causa raiz.',
-  q17:'Correta: B. O colaborador deve acionar o time de QA imediatamente. Processar lotes com inconformidade pode gerar impacto maior na cadeia.',
-  q18:'Correta: C. Cumprir o prazo não é suficiente se o plano de ação não endereça a causa raiz. O time de QA deve devolver para revisão.',
-  q19:'Correta: B. Reduzir artificialmente os RNCs mascara os problemas reais e compromete a melhoria contínua do processo.',
-  q20:'Correta: B. RNCs duplicados devem ser identificados e o duplicado encerrado com referência ao original, com alinhamento entre os analistas.'
+  q1:'Correto. SLA de 24h para elaboração do RNC.',
+  q2:'Correto. A área tem 4 dias a partir do recebimento do e-mail.',
+  q3:'Errado. Quem identifica aciona a Qualidade — o fluxo não parte da área ofensora.',
+  q4:'Errado. O fluxo prevê preenchimento dos campos e resposta pelo e-mail.',
+  q5:'Errado. O RNC é ferramenta de melhoria contínua, não punitiva.',
+  q6:'Certo. O registro documenta o desvio para análise e prevenção de recorrência.',
+  q7:'B) Inconformidade → Qualidade acionada → Elaboração → Notificação.',
+  q8:'C) E-mail enviado pelo time de Qualidade.',
+  q9:'B) Registrar desvios e medir eficiência para melhoria contínua.',
+  q10:'B) Escalonamento para garantir tratativa do atraso.',
+  q11:'C) A área/processo notificado como ofensor.',
+  q12:'B) RNC elaborado em 24h; área tem 4 dias para responder.',
+  q13:'B) O time de QA aciona e elabora o RNC em até 24h.',
+  q14:'B) Do dia 05 ao dia 09 são 4 dias. Resposta no dia 10 está fora do prazo.',
+  q15:'C) Plano de ação não preenchido = RNC incompleto; deve ser devolvido.',
+  q16:'B) Recorrência exige análise de causa raiz, não apenas correções pontuais.',
+  q17:'C) O plano deve ser devolvido para revisão com análise de causa raiz.',
+  q18:'B) Reduzir artificialmente distorce a realidade e prejudica a melhoria.',
+  q19:'B) RNC duplicado deve ser encerrado e vinculado ao original.',
+  q20:'B) Acionar QA imediatamente; não processar lote com inconformidade.',
+  q21:'Perfil esperado: proatividade com registro formal.',
+  q22:'Perfil esperado: receptividade a feedback e aprendizado.',
+  q23:'Perfil esperado: comunicação antecipada e gestão de prioridades.',
+  q24:'Perfil esperado: isenção e consistência na aplicação do processo.',
+  q25:'Perfil esperado: isenção, critério e orientação a processos.'
 };
 
 const Q_LABELS = {
-  q1:'SLA de elaboração do RNC é 24h após a inconformidade',
-  q2:'Área ofensora tem 4 dias para responder após o e-mail',
-  q3:'Área ofensora aciona diretamente o time de QA',
-  q4:'Plano de ação é preenchido no sistema, sem e-mail',
-  q5:'RNC é ferramenta punitiva',
-  q6:'RNC pode ser aberto mesmo após correção',
-  q7:'Sequência correta do fluxo RNC',
-  q8:'Canal oficial de notificação da área ofensora',
-  q9:'Objetivo do RNC',
-  q10:'Consequência do não cumprimento do prazo',
-  q11:'Responsável pelo plano de ação',
-  q12:'Diferença entre SLAs de elaboração e resposta',
-  q13:'Situação: auditoria identifica falha não reportada',
-  q14:'Situação: resposta enviada no 5º dia',
-  q15:'Situação: e-mail respondido sem plano de ação preenchido',
-  q16:'Situação: 3 RNCs no mesmo setor na mesma semana',
-  q17:'Situação: lote sem etiqueta, supervisor ausente',
-  q18:'Situação: plano de ação superficial enviado no prazo',
-  q19:'Situação: gestor pede redução de RNCs',
-  q20:'Situação: dois RNCs abertos para a mesma inconformidade'
+  q1:'SLA de elaboração é 24h',q2:'Área tem 4 dias para responder',q3:'Área ofensora aciona QA diretamente',
+  q4:'Plano de ação apenas no sistema',q5:'RNC é ferramenta punitiva',q6:'RNC pode ser aberto após correção',
+  q7:'Sequência correta do fluxo RNC',q8:'Canal oficial de notificação',q9:'Objetivo do RNC',
+  q10:'Ação quando área não responde no prazo',q11:'Responsável pelo plano de ação',q12:'Diferença entre os SLAs',
+  q13:'Situação: falha identificada na auditoria',q14:'Situação: resposta no 5º dia',
+  q15:'Situação: e-mail sem plano de ação preenchido',q16:'Situação: 3 RNCs no mesmo setor',
+  q17:'Situação: plano superficial entregue no prazo',q18:'Situação: gestor pede redução de RNCs',
+  q19:'Situação: dois RNCs para a mesma inconformidade',q20:'Situação: lote sem etiqueta, supervisor ausente',
+  q21:'Perfil: falha recorrente fora da sua área',q22:'Perfil: reação a feedback negativo',
+  q23:'Perfil: risco de não entregar no prazo',q24:'Perfil: inconformidade de área parceira',
+  q25:'Perfil: característica mais importante na Qualidade'
 };
 
+// Block if already answered
+if (localStorage.getItem('avaliacao_brba01_done')) {
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('blocked').style.display = 'block';
+}
+
 function selectCE(btn, qid, val) {
-  const parent = btn.parentElement;
-  parent.querySelectorAll('.ce-btn').forEach(b => {
-    b.classList.remove('selected-certo','selected-errado');
-  });
+  btn.parentElement.querySelectorAll('.ce-btn').forEach(b => b.classList.remove('selected-certo','selected-errado'));
   btn.classList.add(val === 'C' ? 'selected-certo' : 'selected-errado');
   document.getElementById(qid).value = val;
   updateProgress();
 }
 
-document.querySelectorAll('.opt-label input[type="radio"]').forEach(radio => {
-  radio.addEventListener('change', () => {
-    const name = radio.getAttribute('name');
-    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
-      r.closest('.opt-label').classList.remove('selected');
-    });
-    radio.closest('.opt-label').classList.add('selected');
+document.querySelectorAll('.opt-label input[type="radio"]').forEach(r => {
+  r.addEventListener('change', () => {
+    document.querySelectorAll(`input[name="${r.name}"]`).forEach(x => x.closest('.opt-label').classList.remove('selected'));
+    r.closest('.opt-label').classList.add('selected');
     updateProgress();
   });
 });
 
 function updateProgress() {
-  let answered = 0;
-  for (let i = 1; i <= 20; i++) {
-    const q = 'q' + i;
-    if (i <= 6) {
-      if (document.getElementById(q).value) answered++;
-    } else {
-      if (document.querySelector(`input[name="${q}"]:checked`)) answered++;
-    }
+  let n = 0;
+  for (let i = 1; i <= 25; i++) {
+    const q = 'q'+i;
+    if (i <= 6) { if (document.getElementById(q).value) n++; }
+    else { if (document.querySelector(`input[name="${q}"]:checked`)) n++; }
   }
-  document.getElementById('progress').style.width = (answered / 20 * 100) + '%';
+  document.getElementById('progress').style.width = (n/25*100)+'%';
+  document.getElementById('progress-count').textContent = n;
 }
 
 function getVal(q, i) {
@@ -674,89 +590,83 @@ function submitQuiz() {
   const matricula = document.getElementById('f-matricula').value.trim();
   const tempo = document.getElementById('f-tempo').value;
   const promocao = document.getElementById('f-promocao').value.trim();
-
-  let allFilled = nome && matricula && tempo && promocao;
-  for (let i = 1; i <= 20; i++) {
-    if (!getVal('q'+i, i)) { allFilled = false; break; }
-  }
-
+  let ok = nome && matricula && tempo && promocao;
+  for (let i=1;i<=25;i++) { if (!getVal('q'+i,i)) { ok=false; break; } }
   const err = document.getElementById('error-msg');
-  if (!allFilled) { err.style.display = 'block'; return; }
-  err.style.display = 'none';
+  if (!ok) { err.style.display='block'; return; }
+  err.style.display='none';
 
-  let score = 0;
-  for (let i = 1; i <= 20; i++) {
-    if (getVal('q'+i, i) === GABARITO['q'+i]) score++;
-  }
+  // Score
+  let tec=0, perf=0;
+  for (let i=1;i<=20;i++) { if (getVal('q'+i,i)===GABARITO_TEC['q'+i]) tec++; }
+  for (let i=21;i<=25;i++) { if (getVal('q'+i,i)===GABARITO_PERF['q'+i]) perf++; }
+  const perfPts = perf * 0.5;
+  const total = tec + perfPts;
+  const tecPct = Math.round(tec/20*100);
+  const perfPct = Math.round(perf/5*100);
 
-  const pct = Math.round(score / 20 * 100);
-  const aprovado = pct >= 60;
+  // Block repeat
+  localStorage.setItem('avaliacao_brba01_done','1');
 
-  document.getElementById('quiz').style.display = 'none';
-  document.getElementById('result').style.display = 'block';
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('result').style.display='block';
 
   document.getElementById('res-name').textContent = nome + ' · ' + matricula;
-  const scoreEl = document.getElementById('res-score');
-  scoreEl.textContent = score + '/20';
-  scoreEl.className = 'score-big ' + (aprovado ? 'aprovado' : 'reprovado');
-
-  const bar = document.getElementById('res-bar');
-  bar.style.width = '0%';
-  bar.className = 'score-bar-fill ' + (aprovado ? 'aprovado-bar' : 'reprovado-bar');
-  setTimeout(() => bar.style.width = pct + '%', 100);
-
-  document.getElementById('res-meta').textContent = pct + '% de acerto';
-
-  const verdict = document.getElementById('res-verdict');
-  verdict.textContent = aprovado ? '✓ Aprovado' : '✗ Abaixo de 60%';
-  verdict.className = 'verdict-badge ' + (aprovado ? 'aprovado-badge' : 'reprovado-badge');
+  document.getElementById('res-tec').textContent = tec;
+  document.getElementById('res-perf').textContent = perfPts.toFixed(1);
+  document.getElementById('res-tec-pct').textContent = tecPct+'%';
+  document.getElementById('res-perf-pct').textContent = perfPct+'%';
+  document.getElementById('res-total').textContent = total.toFixed(1);
+  setTimeout(() => {
+    document.getElementById('res-tec-bar').style.width = tecPct+'%';
+    document.getElementById('res-perf-bar').style.width = perfPct+'%';
+  }, 100);
 
   document.getElementById('res-meta-card').innerHTML = `
     <div class="meta-row"><span>Nome</span><span>${nome}</span></div>
     <div class="meta-row"><span>Matrícula</span><span>${matricula}</span></div>
     <div class="meta-row"><span>Tempo de casa</span><span>${tempo}</span></div>
     <div class="meta-row"><span>Última promoção</span><span>${promocao}</span></div>
-  `;
+    <div class="meta-row"><span>Nota técnica</span><span>${tec}/20 (${tecPct}%)</span></div>
+    <div class="meta-row"><span>Nota perfil</span><span>${perfPts.toFixed(1)}/2.5</span></div>
+    <div class="meta-row"><span>Nota total</span><span>${total.toFixed(1)}/22.5</span></div>`;
 
+  // Gabarito
   const gabList = document.getElementById('gab-list');
   gabList.innerHTML = '';
-  for (let i = 1; i <= 20; i++) {
-    const q = 'q' + i;
-    const resp = getVal(q, i);
-    const correct = resp === GABARITO[q];
+  for (let i=1;i<=25;i++) {
+    const q='q'+i;
+    const resp = getVal(q,i);
+    const isPerf = i>=21;
+    const correct = isPerf ? resp===GABARITO_PERF[q] : resp===GABARITO_TEC[q];
     const item = document.createElement('div');
     item.className = 'gab-item';
-    const respLabel = i <= 6 ? (resp === 'C' ? 'Certo' : 'Errado') : resp + ')';
-    const corrLabel = i <= 6 ? (GABARITO[q] === 'C' ? 'Certo' : 'Errado') : GABARITO[q] + ')';
+    let respLabel, corrLabel;
+    if (i<=6) {
+      respLabel = resp==='C'?'Certo':'Errado';
+      corrLabel = GABARITO_TEC[q]==='C'?'Certo':'Errado';
+    } else {
+      respLabel = resp+')';
+      corrLabel = (isPerf ? GABARITO_PERF[q] : GABARITO_TEC[q])+')';
+    }
     item.innerHTML = `
       <span class="gab-q">Q${i}</span>
-      <span style="font-size:15px;flex-shrink:0">${correct ? '✅' : '❌'}</span>
-      <span class="gab-text ${correct ? 'gab-correct' : 'gab-wrong'}">
+      <span style="font-size:15px;flex-shrink:0">${isPerf ? '🟣' : (correct?'✅':'❌')}</span>
+      <span class="gab-text ${isPerf?'gab-perf':(correct?'gab-correct':'gab-wrong')}">
         <strong>${Q_LABELS[q]}</strong><br>
         <span style="color:var(--muted);font-size:12px">
-          Sua resposta: <strong>${respLabel}</strong>${!correct ? ' · Correta: <strong>' + corrLabel + '</strong>' : ''}<br>
-          ${EXPLICACOES[q]}
+          Sua resposta: <strong>${respLabel}</strong>${(!correct&&!isPerf)?` · Correta: <strong>${corrLabel}</strong>`:''}
+          <br>${EXPLICACOES[q]}
         </span>
       </span>`;
     gabList.appendChild(item);
   }
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+  // WhatsApp link
+  const msg = `*Avaliação Qualidade BRBA01*\n\n👤 *${nome}*\n🪪 Matrícula: ${matricula}\n⏱ Tempo de casa: ${tempo}\n📈 Última promoção: ${promocao}\n\n📊 *Resultados:*\n✅ Técnica: ${tec}/20 (${tecPct}%)\n🟣 Perfil: ${perfPts.toFixed(1)}/2.5\n⭐ *Total: ${total.toFixed(1)}/22.5*`;
+  document.getElementById('wa-link').href = `https://wa.me/5571996050309?text=${encodeURIComponent(msg)}`;
 
-function resetQuiz() {
-  document.getElementById('quiz').style.display = 'block';
-  document.getElementById('result').style.display = 'none';
-  for (let i = 1; i <= 6; i++) document.getElementById('q'+i).value = '';
-  document.querySelectorAll('.ce-btn').forEach(b => b.classList.remove('selected-certo','selected-errado'));
-  document.querySelectorAll('input[type="radio"]').forEach(r => {
-    r.checked = false;
-    r.closest('.opt-label').classList.remove('selected');
-  });
-  document.querySelectorAll('input[type="text"]').forEach(i => i.value = '');
-  document.getElementById('f-tempo').value = '';
-  document.getElementById('progress').style.width = '0%';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
